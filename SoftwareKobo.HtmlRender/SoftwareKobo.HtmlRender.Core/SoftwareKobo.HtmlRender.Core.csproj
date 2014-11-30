@@ -38,8 +38,58 @@
     <TargetPlatform Include="Windows, Version=8.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ElementRenderContainerBase.cs" />
+    <Compile Include="ElementRender\AbbrRender.cs" />
+    <Compile Include="ElementRender\AddressRender.cs" />
+    <Compile Include="ElementRender\AppletRender.cs" />
+    <Compile Include="ElementRender\ARender.cs" />
+    <Compile Include="ElementRender\BigRender.cs" />
+    <Compile Include="ElementRender\BlockquoteRender.cs" />
+    <Compile Include="ElementRender\BrRender.cs" />
+    <Compile Include="ElementRender\ButtonRender.cs" />
+    <Compile Include="ElementRender\CanvasRender.cs" />
+    <Compile Include="ElementRender\CenterRender.cs" />
+    <Compile Include="ElementRender\CodeRender.cs" />
+    <Compile Include="ElementRender\DdRender.cs" />
+    <Compile Include="ElementRender\DivRender.cs" />
+    <Compile Include="ElementRender\EmRender.cs" />
+    <Compile Include="ElementRender\FontRender.cs" />
+    <Compile Include="ElementRender\H1Render.cs" />
+    <Compile Include="ElementRender\H2Render.cs" />
+    <Compile Include="ElementRender\H3Render.cs" />
+    <Compile Include="ElementRender\H4Render.cs" />
+    <Compile Include="ElementRender\H5Render.cs" />
+    <Compile Include="ElementRender\H6Render.cs" />
+    <Compile Include="ElementRender\HrRender.cs" />
+    <Compile Include="ElementRender\HtmlRender.cs" />
+    <Compile Include="ElementRender\IframeRender.cs" />
+    <Compile Include="ElementRender\ImgRender.cs" />
+    <Compile Include="ElementRender\InputRender.cs" />
+    <Compile Include="ElementRender\IRender.cs" />
+    <Compile Include="ElementRender\LiRender.cs" />
+    <Compile Include="ElementRender\NoscriptRender.cs" />
+    <Compile Include="ElementRender\ObjectRender.cs" />
+    <Compile Include="ElementRender\OlRender.cs" />
+    <Compile Include="ElementRender\OptionRender.cs" />
+    <Compile Include="ElementRender\PreRender.cs" />
+    <Compile Include="ElementRender\SpanRender.cs" />
+    <Compile Include="ElementRender\StrongRender.cs" />
+    <Compile Include="ElementRender\TableRender.cs" />
+    <Compile Include="ElementRender\TextareaRender.cs" />
+    <Compile Include="ElementRender\VideoRender.cs" />
+    <Compile Include="Extension\ElementExtensions.cs" />
+    <Compile Include="HtmlRenderHelper.cs" />
+    <Compile Include="Interface\IElementRender.cs" />
     <Compile Include="Interface\ITextContainer.cs" />
+    <Compile Include="ElementRender\PRender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RenderContextBase.cs" />
+    <Compile Include="TextContainer\ListContainer.cs" />
+    <Compile Include="TextContainer\OrderListContainer.cs" />
+    <Compile Include="TextContainer\ParagraphContainer.cs" />
+    <Compile Include="TextContainer\RichTextBlockContainer.cs" />
+    <Compile Include="TextContainer\SpanContainer.cs" />
+    <Compile Include="TextContainer\UnorderListContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AngleSharp">
@@ -49,6 +99,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
