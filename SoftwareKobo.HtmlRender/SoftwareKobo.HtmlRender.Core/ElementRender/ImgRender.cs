@@ -1,4 +1,5 @@
-﻿using AngleSharp.DOM;
+﻿using Windows.UI.Xaml.Media;
+using AngleSharp.DOM;
 using AngleSharp.DOM.Html;
 using SoftwareKobo.HtmlRender.Core.Extension;
 using SoftwareKobo.HtmlRender.Core.Interface;
@@ -22,8 +23,6 @@ namespace SoftwareKobo.HtmlRender.Core.ElementRender
 
         public virtual void RenderElement(IElement element, ITextContainer parent, RenderContextBase context)
         {
-            // TODO
-
             var img = (IHtmlImageElement)element;
             var image = new Image
             {
@@ -35,9 +34,9 @@ namespace SoftwareKobo.HtmlRender.Core.ElementRender
             int? width = img.Width();
             if (width.HasValue)
             {
-                if (width.Value > Window.Current.Bounds.Width)
+                if (width.Value > Window.Current.Bounds.Width - 40)
                 {
-                    scale = Window.Current.Bounds.Width / width.Value;
+                    scale = (Window.Current.Bounds.Width - 40) / width.Value;
                 }
 
                 image.Width = width.Value * scale;
@@ -58,9 +57,9 @@ namespace SoftwareKobo.HtmlRender.Core.ElementRender
                         int? width1 = img.Width();
                         if (width1.HasValue)
                         {
-                            if (width1.Value > Window.Current.Bounds.Width)
+                            if (width1.Value > Window.Current.Bounds.Width - 40)
                             {
-                                scale1 = Window.Current.Bounds.Width / width1.Value;
+                                scale1 = (Window.Current.Bounds.Width - 40) / width1.Value;
                             }
 
                             image.Width = width1.Value * scale1;
@@ -78,9 +77,9 @@ namespace SoftwareKobo.HtmlRender.Core.ElementRender
                         int? width1 = img.Width();
                         if (width1.HasValue)
                         {
-                            if (width1.Value > Window.Current.Bounds.Width)
+                            if (width1.Value > Window.Current.Bounds.Width - 40)
                             {
-                                scale1 = Window.Current.Bounds.Width / width1.Value;
+                                scale1 = (Window.Current.Bounds.Width - 40) / width1.Value;
                             }
 
                             image.Width = width1.Value * scale1;

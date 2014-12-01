@@ -16,9 +16,14 @@ namespace SoftwareKobo.HtmlRender.Core
         {
             Default = new ElementRenderContainerBase();
             Default
+                .Register<AbbrRender>()
+                .Register<AddressRender>()
                 .Register<ARender>()
+                .Register<AudioRender>()
                 .Register<BlockquoteRender>()
+                .Register<BRender>()
                 .Register<BrRender>()
+                .Register<ButtonRender>()
                 .Register<CenterRender>()
                 .Register<CodeRender>()
                 .Register<DivRender>()
@@ -32,6 +37,8 @@ namespace SoftwareKobo.HtmlRender.Core
                 .Register<HrRender>()
                 .Register<IframeRender>()
                 .Register<ImgRender>()
+                .Register<InputRender>()
+                .Register<IRender>()
                 .Register<LiRender>()
                 .Register<ObjectRender>()
                 .Register<OlRender>()
@@ -39,7 +46,12 @@ namespace SoftwareKobo.HtmlRender.Core
                 .Register<PreRender>()
                 .Register<SpanRender>()
                 .Register<StrongRender>()
-                .Register<TableRender>();
+                .Register<SubRender>()
+                .Register<SupRender>()
+                .Register<TableRender>()
+                .Register<TextareaRender>()
+                .Register<UlRender>()
+                .Register<VideoRender>();
         }
 
         public static ElementRenderContainerBase Default
@@ -110,6 +122,23 @@ namespace SoftwareKobo.HtmlRender.Core
                 throw new ArgumentNullException("tagRender");
             }
             Renders.Add(tagRender.TagName, tagRender.GetType());
+            return this;
+        }
+
+        public ElementRenderContainerBase OverRegister<TBefore, TAfter>()
+            where TBefore : IElementRender
+            where TAfter : IElementRender
+        {
+            var before = Activator.CreateInstance<TBefore>();
+            var after = Activator.CreateInstance<TAfter>();
+            if (before.TagName == after.TagName)
+            {
+                Renders[after.TagName] = typeof(TAfter);
+            }
+            else
+            {
+                throw new ArgumentException("覆盖类型错误。");
+            }
             return this;
         }
     }

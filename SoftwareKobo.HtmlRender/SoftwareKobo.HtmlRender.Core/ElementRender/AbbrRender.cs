@@ -16,7 +16,7 @@ namespace SoftwareKobo.HtmlRender.Core.ElementRender
 
         public virtual void RenderElement(IElement element, ITextContainer parent, RenderContextBase context)
         {
-            throw new NotImplementedException();
+            context.RenderNode(element,parent);
         }
     }
 }

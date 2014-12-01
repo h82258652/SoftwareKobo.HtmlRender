@@ -1,4 +1,5 @@
-﻿using AngleSharp.DOM;
+﻿using Windows.UI.Xaml.Documents;
+using AngleSharp.DOM;
 using System;
 using System.Collections.Generic;
 
@@ -29,7 +30,7 @@ namespace SoftwareKobo.HtmlRender.Core.Extension
             var dict = new Dictionary<string, string>();
             foreach (var propertyValue in propertyValues)
             {
-                var temp = propertyValue.Trim().Split(';');
+                var temp = propertyValue.Trim().Split(':');
                 var property = temp[0];
                 var value = temp[1];
                 dict.Add(property, value);

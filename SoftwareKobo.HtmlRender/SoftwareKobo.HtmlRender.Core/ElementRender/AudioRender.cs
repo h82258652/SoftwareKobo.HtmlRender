@@ -6,24 +6,25 @@ using Windows.UI.Xaml.Controls;
 
 namespace SoftwareKobo.HtmlRender.Core.ElementRender
 {
-    public class VideoRender : IElementRender
+    public class AudioRender : IElementRender
     {
         public string TagName
         {
             get
             {
-                return "video";
+                return "audio";
             }
         }
 
         public virtual void RenderElement(IElement element, ITextContainer parent, RenderContextBase context)
         {
-            var video = (IHtmlAudioElement)element;
+            var audio = (IHtmlAudioElement)element;
 
             var mediaElement = new MediaElement
             {
-                Source = new Uri(video.Source),
-                AreTransportControlsEnabled = true
+                Source = new Uri(audio.Source),
+                AreTransportControlsEnabled = true,
+                MinHeight = 65
             };
 
             parent.Add(mediaElement);

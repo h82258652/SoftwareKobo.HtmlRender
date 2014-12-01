@@ -23,8 +23,6 @@ namespace SoftwareKobo.HtmlRender.Core.ElementRender
 
         public virtual void RenderElement(IElement element, ITextContainer parent, RenderContextBase context)
         {
-            // TODO
-
             var a = (IHtmlAnchorElement)element;
 
             var anchor = new Hyperlink
@@ -36,12 +34,7 @@ namespace SoftwareKobo.HtmlRender.Core.ElementRender
                 var dialog = new MessageDialog(a.Href, "使用浏览器打开");
                 dialog.Commands.Add(new UICommand("确定", async cmd =>
                 {
-                    var success = await Launcher.LaunchUriAsync(new Uri(a.Href, UriKind.Absolute),
-                           new LauncherOptions
-                           {
-                               TreatAsUntrusted = true,
-                               DisplayApplicationPicker = true
-                           });
+                    var success = await Launcher.LaunchUriAsync(new Uri(a.Href, UriKind.Absolute));
                     if (success)
                     {
                         anchor.Foreground = new SolidColorBrush(Colors.Purple);

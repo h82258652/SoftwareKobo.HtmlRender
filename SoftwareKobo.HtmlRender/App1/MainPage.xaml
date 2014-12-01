@@ -16,6 +16,7 @@
         </Grid.RowDefinitions>
         <TextBlock x:Name="T" FontSize="16"></TextBlock>
         <Button Grid.Row="1" x:Name="B" Click="ButtonBase_OnClick"></Button>
+
         <ScrollViewer Grid.Row="2">
             <RichTextBlock x:Name="R" FontSize="16" Margin="20,0,20,10"></RichTextBlock>
         </ScrollViewer>

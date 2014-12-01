@@ -1,5 +1,4 @@
-﻿using System;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace SoftwareKobo.HtmlRender.Core
@@ -7,7 +6,7 @@ namespace SoftwareKobo.HtmlRender.Core
     public class HtmlRenderHelper
     {
         public static readonly DependencyProperty HtmlProperty = DependencyProperty.Register(
-            "PropertyType", typeof(string), typeof(HtmlRenderHelper),
+            "Html", typeof(string), typeof(HtmlRenderHelper),
             new PropertyMetadata(default(string), OnHtmlChanged));
 
         public static string GetHtml(DependencyObject obj)
@@ -22,11 +21,20 @@ namespace SoftwareKobo.HtmlRender.Core
 
         private static void OnHtmlChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
         {
-            // TODO
-            var renderContext = new RenderContextBase((string)args.NewValue);
-
-            var richTextBlock = sender as RichTextBlock;
-            renderContext.Render(richTextBlock);
+            var html = (string)args.NewValue;
+            var renderContext = RenderContextContainer.GetInstance(html);
+            if (sender is RichTextBlock)
+            {
+                renderContext.Render((RichTextBlock)sender);
+            }
+            else if (sender is Panel)
+            {
+                renderContext.Render((Panel)sender);
+            }
+            else if (sender is Border)
+            {
+                renderContext.Render((Border)sender);
+            }
         }
     }
 }

@@ -17,9 +17,10 @@ namespace SoftwareKobo.HtmlRender.Core.ElementRender
 
         public virtual void RenderElement(IElement element, ITextContainer parent, RenderContextBase context)
         {
-            // TODO
-            var span = new Span();
-            span.FontSize = 1 * 16;
+            var span = new Span
+            {
+                FontSize = 1 * 16
+            };
             parent.Add(span);
             context.RenderNode(element, new SpanContainer(span));
         }

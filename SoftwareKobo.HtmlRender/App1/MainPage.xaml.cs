@@ -48,7 +48,7 @@ namespace App1
             // 则系统会为您处理该事件。
         }
 
-        private int id = 509747;
+        private int id = 508419;
 
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
@@ -56,6 +56,18 @@ namespace App1
             B.Content = news.Id;
             T.Text = news.Title;
             var detail = news.Content;
+
+            //var detail = "<table><thead><tr><td>00</td><td>10</td></tr></thead><tbody><tr><td>01</td><td>11</td></tr><tr><td>02</td><td>12</td></tr></tbody></table>"
+                
+            //    +"<select>" +
+            //    "<option>a</option>" +
+            //    "<option>b</option>" +
+            //    "<option>b</option>" +
+            //    "<option>b</option>" +
+            //    "<option>b</option>" +
+            //    "</select>" +
+            //    "ffffffffffffffff<b>wwwwwwwwwwww</b>";
+
             HtmlRenderHelper.SetHtml(R, detail);
 
 

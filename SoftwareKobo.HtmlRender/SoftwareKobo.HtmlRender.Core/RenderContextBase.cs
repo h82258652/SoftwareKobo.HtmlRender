@@ -1,4 +1,6 @@
-﻿using AngleSharp;
+﻿using Windows.UI.Popups;
+using Windows.UI.Xaml;
+using AngleSharp;
 using AngleSharp.DOM;
 using SoftwareKobo.HtmlRender.Core.Interface;
 using SoftwareKobo.HtmlRender.Core.TextContainer;
@@ -62,6 +64,7 @@ namespace SoftwareKobo.HtmlRender.Core
 
         public void Render(RichTextBlock richTextBlock)
         {
+            GC.Collect();
             if (richTextBlock == null)
             {
                 throw new ArgumentNullException("richTextBlock");
@@ -72,17 +75,20 @@ namespace SoftwareKobo.HtmlRender.Core
 
         public void Render(Border border)
         {
+            GC.Collect();
             if (border == null)
             {
                 throw new ArgumentNullException("border");
             }
             var richTextBlock = new RichTextBlock();
+            border.Child = null;
             border.Child = richTextBlock;
             Render(richTextBlock);
         }
 
         public void Render(Panel panel)
         {
+            GC.Collect();
             if (panel == null)
             {
                 throw new ArgumentNullException("panel");
@@ -93,7 +99,7 @@ namespace SoftwareKobo.HtmlRender.Core
             Render(richTextBlock);
         }
 
-        public void RenderNode(INode node, ITextContainer parentContainer)
+        public async void RenderNode(INode node, ITextContainer parentContainer)
         {
             var element = node as IElement;
             if (element != null)
@@ -131,7 +137,11 @@ namespace SoftwareKobo.HtmlRender.Core
                             }
                             else
                             {
-                                Debugger.Break();
+                                if (Debugger.IsAttached)
+                                {
+                                    Debugger.Break();
+                                }
+                                await new MessageDialog(string.Format("{0} can't render", childElement.TagName)).ShowAsync();
                             }
                         }
                     }

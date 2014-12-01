@@ -15,6 +15,8 @@ namespace SoftwareKobo.HtmlRender.Core.ElementRender
 
         public virtual void RenderElement(IElement element, ITextContainer parent, RenderContextBase context)
         {
+            // under object always is flash,
+            // so dont render object.
         }
     }
 }
