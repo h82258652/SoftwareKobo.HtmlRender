@@ -13,5 +13,5 @@ https://www.nuget.org/packages/SoftwareKobo.HtmlRender.WinRT/
   ...
   xmlns:core="using:SoftwareKobo.HtmlRender.Core"
   ...
-  <RichTextBlock core:HtmlRenderHelper.Html="{Binding YourPropertyName}"></RichTextBlock>
+  &lt;RichTextBlock core:HtmlRenderHelper.Html="{Binding YourPropertyName}"/&gt;
 </code></pre>
