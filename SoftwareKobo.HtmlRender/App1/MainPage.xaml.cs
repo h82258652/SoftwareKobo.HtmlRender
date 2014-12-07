@@ -48,17 +48,19 @@ namespace App1
             // 则系统会为您处理该事件。
         }
 
-        private int id = 508419;
+        private int id = 510264;
 
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             var news = await NewsService.DetailAsync(id);
             B.Content = news.Id;
             T.Text = news.Title;
-          //  var detail = news.Content;
+            var detail = news.Content;
+           var cc=await news.CommentsAsync();
+            detail = string.Join(Environment.NewLine, from temp in cc select temp.Content);
 
-            var detail =
-                "@Zoonware<br/><fieldset class=\"comment_quote\"><legend>引用</legend>可是据说库存不是这样计算的，每个区段都会预留有一些票，并不需要这样动态的去减库存。</fieldset><br/>请注意，是前淘宝工程师，也就是说，只是个码农而已，不是架构师，甚至是否资深也不知道，再者说了，或许Y根本就没抢过春运票也未可知啊。（否则怎会不知每个站都有指定预留车厢的说法呢）";
+           // var detail =
+            //    "@赤狐(zcm123)<br/>@叶鹏<br/><fieldset class=\"comment_quote\"><legend>引用</legend>300000000元都能花了，那为何ui设计的还不如3000元网站，细节啊。</fieldset><br/>3k求源码。";
                 
             //    +"<select>" +
             //    "<option>a</option>" +
