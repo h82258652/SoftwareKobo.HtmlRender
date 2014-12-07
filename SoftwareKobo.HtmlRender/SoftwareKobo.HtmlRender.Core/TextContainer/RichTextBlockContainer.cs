@@ -1,4 +1,5 @@
 ﻿using SoftwareKobo.HtmlRender.Core.Interface;
+using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Documents;
@@ -29,9 +30,17 @@ namespace SoftwareKobo.HtmlRender.Core.TextContainer
 
         public virtual void Add(Inline inline)
         {
-            var paragraph = new Paragraph();
-            paragraph.Inlines.Add(inline);
-            Add(paragraph);
+            var paragraph = _richTextBlock.Blocks.LastOrDefault() as Paragraph;
+            if (paragraph == null)
+            {
+                paragraph = new Paragraph();
+                paragraph.Inlines.Add(inline);
+                Add(paragraph);
+            }
+            else
+            {
+                paragraph.Inlines.Add(inline);
+            }
         }
     }
 }

@@ -29,7 +29,8 @@ namespace SoftwareKobo.HtmlRender.Core.TextContainer
             {
                 BorderBrush = new SolidColorBrush(Colors.Gray),
                 BorderThickness = new Thickness(1, 0, 0, 1),
-                Margin = new Thickness(5, 0, 0, 5)
+                Margin = new Thickness(5, 0, 0, 5),
+                Padding = new Thickness(3, 0, 0, 3)
             };
             Grid.SetRow(border, 1);
             grid.Children.Add(border);
