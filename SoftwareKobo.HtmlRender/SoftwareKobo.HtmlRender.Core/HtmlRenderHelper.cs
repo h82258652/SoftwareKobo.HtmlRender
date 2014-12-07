@@ -22,6 +22,7 @@ namespace SoftwareKobo.HtmlRender.Core
         private static void OnHtmlChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
         {
             var html = (string)args.NewValue;
+            html = html ?? string.Empty;
             var renderContext = RenderContextContainer.GetInstance(html);
             if (sender is RichTextBlock)
             {
