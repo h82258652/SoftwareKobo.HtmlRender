@@ -15,6 +15,10 @@
         </Grid.RowDefinitions>
         <Button Click="ButtonBase_OnClick" Content="1111111111111"></Button>
         <ScrollViewer Grid.Row="1">
-        <RichTextBlock Grid.Row="1" core:HtmlRenderHelper.Html="{Binding Path=HH}" IsTextSelectionEnabled="False" FontSize="16"></RichTextBlock></ScrollViewer>
+            <!--
+        <RichTextBlock Grid.Row="1" core:HtmlRenderHelper.Html="{Binding Path=HH}" IsTextSelectionEnabled="False" FontSize="16"></RichTextBlock>
+            -->
+            <WebView x:Name="ff"></WebView>
+        </ScrollViewer>
     </Grid>
 </Page>

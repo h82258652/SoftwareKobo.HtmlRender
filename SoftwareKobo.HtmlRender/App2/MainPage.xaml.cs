@@ -48,6 +48,8 @@ namespace App2
 
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
+            ff.Navigate(new Uri("http://player.pps.tv/player/sid/3FSZWC/v.swf"));
+
             var detail = (await NewsService.DetailAsync(id));
 
             HH = detail.Content;

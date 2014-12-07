@@ -51,6 +51,7 @@
     <Compile Include="ElementRender\CodeRender.cs" />
     <Compile Include="ElementRender\DivRender.cs" />
     <Compile Include="ElementRender\EmRender.cs" />
+    <Compile Include="ElementRender\FieldsetRender.cs" />
     <Compile Include="ElementRender\H1Render.cs" />
     <Compile Include="ElementRender\H2Render.cs" />
     <Compile Include="ElementRender\H3Render.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="ElementRender\ImgRender.cs" />
     <Compile Include="ElementRender\InputRender.cs" />
     <Compile Include="ElementRender\IRender.cs" />
+    <Compile Include="ElementRender\LegendRender.cs" />
     <Compile Include="ElementRender\LiRender.cs" />
     <Compile Include="ElementRender\ObjectRender.cs" />
     <Compile Include="ElementRender\OlRender.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RenderContextBase.cs" />
     <Compile Include="RenderContextContainer.cs" />
+    <Compile Include="TextContainer\GroupBoxContainer.cs" />
     <Compile Include="TextContainer\ListContainer.cs" />
     <Compile Include="TextContainer\OrderListContainer.cs" />
     <Compile Include="TextContainer\ParagraphContainer.cs" />

@@ -55,9 +55,10 @@ namespace App1
             var news = await NewsService.DetailAsync(id);
             B.Content = news.Id;
             T.Text = news.Title;
-            var detail = news.Content;
+           // var detail = news.Content;
 
-            //var detail = "<table><thead><tr><td>00</td><td>10</td></tr></thead><tbody><tr><td>01</td><td>11</td></tr><tr><td>02</td><td>12</td></tr></tbody></table>"
+            var detail =
+                "@Zoonware<fieldset class=\"comment_quote\"><legend>引用</legend>可是据说库存不是这样计算的，每个区段都会预留有一些票，并不需要这样动态的去减库存。</fieldset><br/>请注意，是前淘宝工程师，也就是说，只是个码农而已，不是架构师，甚至是否资深也不知道，再者说了，或许Y根本就没抢过春运票也未可知啊。（否则怎会不知每个站都有指定预留车厢的说法呢）";
                 
             //    +"<select>" +
             //    "<option>a</option>" +
