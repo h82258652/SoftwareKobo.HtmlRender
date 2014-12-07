@@ -35,7 +35,10 @@ namespace SoftwareKobo.HtmlRender.Core.TextContainer
             Grid.SetRow(border, 1);
             grid.Children.Add(border);
 
-            var richTextBlock = new RichTextBlock();
+            var richTextBlock = new RichTextBlock()
+            {
+                IsTextSelectionEnabled = false
+            };
             border.Child = richTextBlock;
             _innerContainer = new RichTextBlockContainer(richTextBlock);
 
