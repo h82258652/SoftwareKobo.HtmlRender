@@ -1,4 +1,7 @@
-﻿using AngleSharp.DOM;
+﻿using Windows.Security.Cryptography.Certificates;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using AngleSharp.DOM;
 using AngleSharp.DOM.Html;
 using SoftwareKobo.HtmlRender.Core.Interface;
 using SoftwareKobo.HtmlRender.Core.TextContainer;
@@ -25,28 +28,35 @@ namespace SoftwareKobo.HtmlRender.Core.ElementRender
         {
             var a = (IHtmlAnchorElement)element;
 
-            var anchor = new Hyperlink
+            if (a.ChildElementCount == 0)
             {
-                Foreground = new SolidColorBrush(Colors.LightBlue)
-            };
-            anchor.Click += async (sender, args) =>
-            {
-                var dialog = new MessageDialog(a.Href, "使用浏览器打开");
-                dialog.Commands.Add(new UICommand("确定", async cmd =>
+                var anchor = new Hyperlink
                 {
-                    var success = await Launcher.LaunchUriAsync(new Uri(a.Href, UriKind.Absolute));
-                    if (success)
+                    Foreground = new SolidColorBrush(Colors.LightBlue)
+                };
+                anchor.Click += async (sender, args) =>
+                {
+                    var dialog = new MessageDialog(a.Href, "使用浏览器打开");
+                    dialog.Commands.Add(new UICommand("确定", async cmd =>
                     {
-                        anchor.Foreground = new SolidColorBrush(Colors.Purple);
-                    }
-                }));
-                dialog.Commands.Add(new UICommand("取消"));
-                await dialog.ShowAsync();
-            };
+                        var success = await Launcher.LaunchUriAsync(new Uri(a.Href, UriKind.Absolute));
+                        if (success)
+                        {
+                            anchor.Foreground = new SolidColorBrush(Colors.Purple);
+                        }
+                    }));
+                    dialog.Commands.Add(new UICommand("取消"));
+                    await dialog.ShowAsync();
+                };
 
-            parent.Add(anchor);
+                parent.Add(anchor);
 
-            context.RenderNode(element, new SpanContainer(anchor));
+                context.RenderNode(element, new SpanContainer(anchor));
+            }
+            else
+            {
+                context.RenderNode(element,parent);
+            }
         }
     }
 }
