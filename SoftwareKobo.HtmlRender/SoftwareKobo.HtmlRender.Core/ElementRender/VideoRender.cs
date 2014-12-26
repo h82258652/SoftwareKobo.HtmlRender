@@ -27,7 +27,7 @@ namespace SoftwareKobo.HtmlRender.Core.ElementRender
             {
                 var sourceElement =
                     video.Children.FirstOrDefault(
-                        temp => temp.TagName == "source" && temp.GetAttribute("type") == "video/mp4");
+                        temp => string.Equals(temp.TagName, "source", StringComparison.OrdinalIgnoreCase) && string.Equals(temp.GetAttribute("type"), "video/mp4", StringComparison.OrdinalIgnoreCase));
                 if (sourceElement != null)
                 {
                     source = sourceElement.GetAttribute("src");
@@ -36,7 +36,8 @@ namespace SoftwareKobo.HtmlRender.Core.ElementRender
 
             var mediaElement = new MediaElement
             {
-                AreTransportControlsEnabled = true
+                AreTransportControlsEnabled = true,
+                MinHeight = 65
             };
 
             if (string.IsNullOrEmpty(source) == false)
@@ -44,8 +45,19 @@ namespace SoftwareKobo.HtmlRender.Core.ElementRender
                 mediaElement.Source = new Uri(source);
             }
 
+            var width = video.DisplayWidth;
+            if (width > 0)
+            {
+                mediaElement.Width = width;
+            }
+
+            var height = video.DisplayHeight;
+            if (height > 0)
+            {
+                mediaElement.Height = height;
+            }
+
             parent.Add(mediaElement);
-            context.RenderNode(element, parent);
         }
     }
 }
