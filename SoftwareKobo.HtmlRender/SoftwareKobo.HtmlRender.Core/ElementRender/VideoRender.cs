@@ -18,7 +18,7 @@ namespace SoftwareKobo.HtmlRender.Core.ElementRender
 
         public virtual void RenderElement(IElement element, ITextContainer parent, RenderContextBase context)
         {
-            var video = (IHtmlAudioElement)element;
+            var video = (IHtmlVideoElement)element;
 
             var mediaElement = new MediaElement
             {
