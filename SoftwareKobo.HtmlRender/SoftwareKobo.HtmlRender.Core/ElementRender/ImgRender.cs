@@ -1,5 +1,4 @@
-﻿using Windows.UI.Xaml.Media;
-using AngleSharp.DOM;
+﻿using AngleSharp.DOM;
 using AngleSharp.DOM.Html;
 using SoftwareKobo.HtmlRender.Core.Extension;
 using SoftwareKobo.HtmlRender.Core.Interface;
@@ -24,9 +23,15 @@ namespace SoftwareKobo.HtmlRender.Core.ElementRender
         public virtual void RenderElement(IElement element, ITextContainer parent, RenderContextBase context)
         {
             var img = (IHtmlImageElement)element;
+            var source = img.Source;
+            if (string.IsNullOrEmpty(source))
+            {
+                return;
+            }
+
             var image = new Image
             {
-                Source = new BitmapImage(new Uri(img.Source, UriKind.Absolute))
+                Source = new BitmapImage(new Uri(source, UriKind.Absolute))
             };
 
             double scale = 1.0;
